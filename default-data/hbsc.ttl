@@ -1,0 +1,11 @@
+@base <http://example.org/HBSC> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix s: <http://persemid.bfh.ch/vocab/hbsc#> .
+
+<#>
+    a s:BSCData ;
+    s:name "Hochschule für angewandte Examples" ;
+    s:datebsc "2017-02-14"^^xsd:date ;
+    s:studiengang "Informatik" ;
+    s:umfang "180" .

@@ -1,0 +1,114 @@
+<% include ../header.html %> 
+
+<div class="container psidimas" role="main">
+
+  <div class="page-header">
+    <h1>PerSemID Ansicht Hochschule MSc</h1>
+  </div>
+  <p>Dies ist die Ansicht für die Hochschule MSc. Sie kann hier das vom Studenten zusammengestellte Bewerbungsdossier abrufen, einsehen und
+     anschliessend einen Immatrikulationsbescheid erstellen, welcher dem Studenten die Zulassung oder Ablehnung zum Masterstudium mitteilt.
+     Über die Berechtigungsverwaltung kann sie Berechtigungsobjekte anlegen und mit diesen den Zugriff auf den Bescheid steuern.</p>
+  <p>Ein Export des <a href="#/decision">Immatrikulationsbescheids</a> kann für <a href="#/permissions">Berechtigte</a> unter <a href="/hmsc/export">/hmsc/export/</a> heruntergeladen werden.</p>
+
+  <div class="col-xs-12" style="height:20px;"></div>
+
+  <!-- main navigation -->
+
+  <div>
+    <ul id="ul-nav-main" class="nav nav-pills">
+      <li id="li-nav-main-dossier" role="presentation" class="active"><a id="a-nav-main-dossier" href="#/dossier">Bewerbungsdossier&nbsp;<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-decision" role="presentation"><a id="a-nav-main-decision" href="#/decision">Immatrikulationsbescheid&nbsp;<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-permissions" role="presentation"><a id="a-nav-main-permissions" href="#/permissions">Berechtigungsobjekte&nbsp;<span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></li>
+    </ul>
+  </div>
+
+  <div class="col-xs-12" style="height:20px;"></div>
+
+  <div id="div-views">
+
+    <!-- view for uploading the dossier from the student -->
+
+    <div id="div-view-hmsc-dossier"  class="col-md-9">
+
+      <div id="div-dossier-form" class="col-md-6">
+        <form id="form-dossier-upload" action="/import/hmsc" enctype="multipart/form-data" method="post">
+          <div class="form-group">
+            <label for="in-dossier-file">Bewerbungsdossier importieren</label>
+            <input id="in-dossier-file" required type="file" name="upload">
+          </div>
+          <button id="btn-hmsc-dossier-save" type="submit" class="btn btn-default">Importieren&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
+          <button id="btn-hmsc-dossier-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </form>
+      </div>
+
+      <div id="div-dossier-show" class="col-md-9">
+
+        <div id="div-view-dossier-hmsc">
+          <h3>Persönliche Daten Student</h3>
+
+          <div id="ld2h-dossier-studentdata-hmsc" class="render" resource="http://example.org/Student#" context="m:Dossierview_studentdata"></div>
+
+          <h3>Daten Hochschule BSc</h3>
+
+          <div id="ld2h-dossier-bscdata-hmsc" class="render" resource="http://example.org/HBSC#" context="m:Dossierview_bscdata"></div>
+
+          <h3>Dokumente</h3>
+
+          <table class="table table-condensed table-bordered">
+            <thead>
+              <tr>
+                <th>Datei</th>
+              </tr>
+            </thead>
+            <tbody id="ld2h-dossier-files-hmsc" class="render" resource="http://example.org/HMSC#" context="m:Dossierview_files"></tbody>
+          </table>
+        </div>
+
+        <div id="div-dossier-show-operations">
+          <form id="form-dossier-delete">
+            <button id="btn-hmsc-dossier-delete" type="button" class="btn btn-default" onclick="if(confirm('Dossier wirklich löschen?')) { window.deleteDossier(); }">Dossier löschen&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"/></span></button>
+            &nbsp;<a id="a-hmsc-dossier-refresh" href="#/dossier"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- view for creating the immatriculation-decision -->
+
+    <div id="div-view-hmsc-decision"  class="col-md-3" style="display:none;">
+      <form id="form-dossier-decision">
+        <div id="ld2h-decision" class="render" resource="http://example.org/HMSC#" context="m:Decision"></div>
+        <button id="btn-hmsc-dossier-decision" type="button" class="btn btn-default">Bescheid speichern&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
+      </form>
+    </div>
+
+    <!-- view for editing permissions -->
+
+    <div id="div-view-hmsc-permissions"  class="col-md-9" style="display:none;">
+      <div id="div-hmsc-permissions-form" class="col-md-9">
+
+        <div id="ld2h-hmsc-permissions" class="render" resource="http://example.org/HMSC#" context="m:Permissionview"></div>
+
+        <form id="form-hmsc-permissions">
+          <div class="form-group">
+            <label for="in-hmsc-webid">WebID des Studenten</label>
+            <input type="text" class="form-control" id="in-hmsc-webid" placeholder="WebID des Studenten">
+          </div>
+          <button id="btn-hmsc-permissions-save" type="button" class="btn btn-default">Speichern&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
+          <button id="btn-hmsc-permissions-delete" type="button" class="btn btn-default" onclick="if(confirm('Berechtigung wirklich löschen?')) { window.deletePermissionsFromStore(); }">Berechtigung löschen&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"/></span></button>
+          <button id="btn-hmsc-permissions-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/rdf2h.js"></script>
+<script src="js/ld2h.js"></script>
+<script src="js/hmsc.js"></script>
+
+<% include ../footer.html %> 

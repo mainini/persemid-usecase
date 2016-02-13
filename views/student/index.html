@@ -1,0 +1,170 @@
+<% include ../header.html %> 
+
+<div class="container psidimas" role="main">
+
+  <div class="page-header">
+    <h1>PerSemID Ansicht Student</h1>
+  </div>
+  <p>Dies ist die Ansicht für den Studenten. Er kann hier seine persönlichen Daten einsehen und mutieren.
+     Auch kann er die Daten aus dem System der <a href="/hbsc">Hochschule BSc</a> abrufen und diese mit seinen eigenen zu einem Bewerbungsdossier zusammenfassen.
+     Desweiteren stehen Funktionen zum Ablegen von Dokumenten in Dateiform sowie zum Verwalten von Berechtigungsobjekten zur Verfügung.</p>
+  <p>Ein Export des zusammengestellten <a href="#/dossier">Bewerbungsdossiers</a> kann für <a href="#/permissions">Berechtigte</a> unter <a href="/student/export">/student/export/</a> heruntergeladen werden.</p>
+
+  <div class="col-xs-12" style="height:20px;"></div>
+
+  <!-- main navigation -->
+
+  <div>
+    <ul id="ul-nav-main" class="nav nav-pills">
+      <li id="li-nav-main-studentdata" role="presentation" class="active"><a href="#/studentdata/view">Persönliche Daten&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-files" role="presentation"><a href="#/files/view">Dokumente&nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-bscdata" role="presentation"><a href="#/bscdata">BSc-Daten&nbsp;<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-dossier" role="presentation"><a href="#/dossier">Bewerbungsdossier&nbsp;<span class="glyphicon glyphicon-share" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-permissions" role="presentation"><a href="#/permissions">Berechtigungsobjekte&nbsp;<span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-decision" role="presentation"><a href="#/decision">Immatrikulationsbescheid&nbsp;<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a></li>
+    </ul>
+  </div>
+
+  <div class="col-xs-12" style="height:20px;"></div>
+
+  <div id="div-views">
+
+    <!-- view for editing student's personal data -->
+
+    <div id="div-view-studentdata"  class="col-md-9">
+
+      <ul id="ul-nav-data" class="nav nav-tabs">
+        <li id="li-nav-data-view" role="presentation" class="active"><a href="#/studentdata/view">Ansicht&nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></li>
+        <li id="li-nav-data-edit" role="presentation"><a href="#/studentdata/edit">Bearbeiten&nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></li>
+      </ul>
+
+      <div id="div-studentdata-view">
+        <h3>Meine Daten</h3>
+        <div id="ld2h-view-studentdata" class="render" resource="http://example.org/Student#" context="s:Dataview"></div>
+        <div id="ld2h-view-studentbscdata" class="render" resource="http://example.org/HBSC#" context="s:Dataview"></div>
+        <div><a id="a-data-view-refresh" href="#/studentdata/view"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a></div>
+      </div>
+
+      <div id="div-studentdata-edit" style="display:none;">
+        <% include editform.html %>
+      </div>
+
+    </div>
+
+    <!-- view for uploading and managing files -->
+
+    <div id="div-view-files" class="col-md-9" style="display:none;">
+
+      <ul id="ul-nav-files" class="nav nav-tabs">
+        <li id="li-nav-files-view" role="presentation" class="active"><a href="#/files/view">Verwalten&nbsp;<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a></li>
+        <li id="li-nav-files-upload" role="presentation"><a href="#/files/upload">Upload&nbsp;<span class="glyphicon glyphicon-upload" aria-hidden="true"></span></a></li>
+      </ul>
+
+      <div id="div-file-table">
+        <table class="table table-condensed table-bordered">
+          <thead>
+            <tr>
+              <th>Datei</th>
+              <th>Grösse</th>
+              <th>Typ</th>
+              <th>Löschen</th>
+            </tr>
+          </thead>
+          <tbody id="ld2h-view-files" class="render" resource="http://example.org/Student#" context="s:Fileview"></tbody>
+        </table>
+        <div><a id="a-files-view-refresh" href="#/files/view"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a></div>
+      </div>
+
+      <div id="div-file-form" class="col-md-6" style="display:none;">
+        <form id="form-file-upload" action="/files/upload/student" enctype="multipart/form-data" method="post">
+          <div class="form-group">
+            <label for="in-upload-file">Datei hochladen</label>
+            <input id="in-upload-file" required type="file" name="upload">
+          </div>
+          <button id="btn-upload-save" type="submit" class="btn btn-default">Speichern&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+          <button id="btn-upload-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- view for uploading data from hbsc -->
+
+    <div id="div-view-bscdata"  class="col-md-9" style="display:none;">
+      <div id="div-bscdata-form" class="col-md-9">
+        <form id="form-bscdata-upload" action="/import/student" enctype="multipart/form-data" method="post">
+          <div class="form-group">
+            <label for="in-bscdata-file">Daten von der BSc-Hochschule importieren</label>
+            <input id="in-bscdata-file" required type="file" name="upload">
+          </div>
+          <button id="btn-bscdata-save" type="submit" class="btn btn-default">Importieren&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
+          <button id="btn-bscdata-delete" type="button" class="btn btn-default" onclick="if(confirm('Daten Hochschule BSc wirklich löschen?')) { window.deleteDataHBSC(); }">Bestehende löschen&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"/></span></button>
+          <button id="btn-bscdata-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- view for creating the "Bewerbungsdossier" -->
+
+    <div id="div-view-dossier"  class="col-md-9" style="display:none;">
+      <form id="form-dossier">
+        <h3>Meine Daten</h3>
+
+        <div id="ld2h-dossier-studentdata" class="render" resource="http://example.org/Student#" context="s:Dossierview_studentdata"></div>
+
+        <h3>Daten HBSC</h3>
+
+        <div id="ld2h-dossier-bscdata" class="render" resource="http://example.org/HBSC#" context="s:Dossierview_bscdata"></div>
+
+        <h3>Dokumente</h3>
+
+        <table class="table table-condensed table-bordered">
+          <thead>
+            <tr>
+              <th>Datei</th>
+              <th>Im Dossier</th>
+            </tr>
+          </thead>
+          <tbody id="ld2h-dossier-files" class="render" resource="http://example.org/Student#" context="s:Dossierview_files"></tbody>
+        </table>
+
+        <div><button id="btn-dossier-save" type="button" class="btn btn-default">Speichern&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+        &nbsp;<a id="a-data-dossier-refresh" href="#/dossier"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a></div>
+      </form>
+
+    </div>
+
+    <!-- view for editing permissions -->
+
+    <div id="div-view-student-permissions"  class="col-md-9" style="display:none;">
+      <div id="div-student-permissions-form" class="col-md-9">
+
+        <div id="ld2h-student-permissions" class="render" resource="http://example.org/Student#" context="s:Permissionview"></div>
+
+        <form id="form-student-permissions">
+          <div class="form-group">
+            <label for="in-student-webid">WebID der Hochschule Msc</label>
+            <input type="text" class="form-control" id="in-student-webid" placeholder="WebID der Hochschule Msc">
+          </div>
+          <button id="btn-student-permissions-save" type="button" class="btn btn-default">Speichern&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
+          <button id="btn-student-permissions-delete" type="button" class="btn btn-default" onclick="if(confirm('Berechtigung wirklich löschen?')) { window.deletePermissionsFromStore(); }">Berechtigung löschen&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"/></span></button>
+          <button id="btn-student-permissions-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- view for uploading the decision from hmsc -->
+
+    <div id="div-view-hmsc-decision"  class="col-md-9" style="display:none;">
+      <div id="ld2h-student-decision" class="render" resource="http://example.org/HMSC#" context="s:Decisionview"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="js/rdf2h.js"></script>
+<script src="js/ld2h.js"></script>
+<script src="js/student.js"></script>
+
+<% include ../footer.html %> 

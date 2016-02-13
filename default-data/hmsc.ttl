@@ -1,0 +1,8 @@
+@base <http://example.org/HMSC> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix m: <http://persemid.bfh.ch/vocab/hmsc#> .
+
+<#>
+    a m:HMSC ;
+    m:name "Universität Example" ;

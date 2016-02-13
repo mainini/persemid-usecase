@@ -1,0 +1,23 @@
+@base <http://example.org/Student> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix s: <http://persemid.bfh.ch/vocab/student#> .
+
+<#>
+    a s:Student ;
+    s:webid <http://example.org/StudentWebID> ;
+
+    s:name "Dent" ;
+    s:vorname "Stu" ;
+    s:zivilstand "ledig" ;
+    s:geburtsdatum "1990-01-01"^^xsd:date ;
+    s:email "stu.dent@example.org" ;
+    s:strasse "Beispielstrasse 3" ;
+    s:plz "1111" ;
+    s:ort "Beispielzuhause" ;
+    s:nationalitaet "Schweiz" ;
+    s:heimatort "Beispieldorf" ;
+    s:wohnortstudba "Beispielhausen" ;
+    s:wohnort2jahre "Beispielstadt" ;
+    s:matrikelnummer "1-234-56" ;
+    s:sozialversicherungsnummer "123456" .

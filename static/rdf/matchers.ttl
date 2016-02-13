@@ -1,0 +1,729 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
+@prefix s: <http://persemid.bfh.ch/vocab/student#> .
+@prefix b: <http://persemid.bfh.ch/vocab/hbsc#> .
+@prefix m: <http://persemid.bfh.ch/vocab/hmsc#> .
+
+##### Templates for studentdata-view #####
+
+<studentdata> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate rdf:type ;
+    r2h:object s:Student
+  ] ;
+  r2h:template [
+    r2h:context s:Dataview ;
+    r2h:mustache '''<table class="table table-condensed table-bordered">
+       <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Wert</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td id="td-name">{{s:name}}</td>
+          </tr>
+          <tr>
+            <td>Vorname</td>
+            <td id="td-vorname">{{s:vorname}}</td>
+          </tr>
+          <tr>
+            <td>Geburtsdatum</td>
+            <td id="td-geburtsdatum">{{s:geburtsdatum}}</td>
+          </tr>
+          <tr>
+            <td>Zivilstand</td>
+            <td id="td-zivilstand">{{s:zivilstand}}</td>
+          </tr>
+          <tr>
+            <td>E-Mail</td>
+            <td><a id="td-email" href="mailto:{{s:email}}">{{s:email}}</a></td>
+          </tr>
+          <tr>
+            <td>WebID</td>
+            <td id="td-webid"><a href="{{s:webid}}">{{s:webid}}</a></td>
+          </tr>
+          <tr>
+            <td>Matrikelnummer</td>
+            <td id="td-matrikelnummer">{{s:matrikelnummer}}</td>
+          </tr>
+          <tr>
+            <td>Sozialversicherungsnummer</td>
+            <td id="td-sozialversicherungsnummer">{{s:sozialversicherungsnummer}}</td>
+          </tr>
+          <tr>
+            <td>Strasse</td>
+            <td id="td-strasse">{{s:strasse}}</td>
+          </tr>
+          <tr>
+            <td>Postleitzahl</td>
+            <td id="td-plz">{{s:plz}}</td>
+          </tr>
+          <tr>
+            <td>Ort</td>
+            <td id="td-ort">{{s:ort}}</td>
+          </tr>
+          <tr>
+            <td>Nationalität</td>
+            <td id="td-nationalitaet">{{s:nationalitaet}}</td>
+          </tr>
+          <tr>
+            <td>Heimatort</td>
+            <td id="td-heimatort">{{s:heimatort}}</td>
+          </tr>
+          <tr>
+            <td>Wohnort BA</td>
+            <td id="td-wohnortstudba">{{s:wohnortstudba}}</td>
+          </tr>
+          <tr>
+            <td>Wohnort 2 Jahre</td>
+            <td id="td-wohnort2jahre">{{s:wohnort2jahre}}</td>
+          </tr>
+        </tbody>
+      </table>
+    '''
+  ] ;
+  r2h:before <no_studentdata> .
+
+<student_bscdata> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate rdf:type ;
+    r2h:object b:Export
+  ] ;
+  r2h:template [
+    r2h:context s:Dataview ;
+    r2h:mustache '''
+     <h3>Daten BSc</h3>
+     <table class="table table-condensed table-bordered">
+       <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Wert</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Datum BSc-Abschluss</td>
+            <td id="td-datebsc">{{b:datebsc}}</td>
+          </tr>
+          <tr>
+            <td>Studiengang BSc</td>
+            <td id="td-studiengang">{{b:studiengang}}</td>
+          </tr>
+          <tr>
+            <td>Umfang (ECTS)</td>
+            <td id="td-umfang">{{b:umfang}}</td>
+          </tr>
+        </tbody>
+      </table>'''
+  ] ;
+  r2h:before <no_studentdata> .
+
+<no_studentdata> a r2h:Matcher ;
+  r2h:template [
+    r2h:context s:Dataview ;
+    r2h:mustache ""
+  ] .
+
+
+##### Templates for bscdata-view #####
+
+<bscdata> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate rdf:type ;
+    r2h:object b:BSCData
+  ] ;
+  r2h:template [
+    r2h:context b:Dataview ;
+    r2h:mustache '''<table class="table table-condensed table-bordered">
+       <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Wert</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Datum BSc-Abschluss</td>
+            <td id="td-datebsc">{{b:datebsc}}</td>
+          </tr>
+          <tr>
+            <td>Studiengang BSc</td>
+            <td id="td-studiengang">{{b:studiengang}}</td>
+          </tr>
+          <tr>
+            <td>Umfang (ECTS)</td>
+            <td id="td-umfang">{{b:umfang}}</td>
+          </tr>
+        </tbody>
+      </table>'''
+  ] ;
+  r2h:before <no_bscdata> .
+
+<no_bscdata> a r2h:Matcher ;
+  r2h:template [
+    r2h:context b:Dataview ;
+    r2h:mustache "Fehler: Triplestore nicht initialisiert!"
+  ] .
+
+
+##### Templates for student's  files-view #####
+
+<studentfiles> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate s:file
+  ];
+  r2h:template [
+    r2h:context s:Fileview;
+    r2h:mustache '''
+        {{#s:file}}
+            {{{:render .}}}
+        {{/s:file}}
+      '''
+  ] ;
+  r2h:before <no_studentfiles> .
+
+<studentfile> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate s:fileType;
+  ];
+  r2h:template [
+    r2h:context s:Fileview;
+    r2h:mustache '''
+         <tr>
+            <td><a href="/files/download/student/{{s:fileHandle}}">{{s:fileName}}</a></td>
+            <td>{{s:fileSize}}</td>
+            <td>{{s:fileType}}</td>
+            <td><a href="#/files/view" onclick="if(confirm('Datei &quot;{{s:fileName}}&quot; wirklich löschen?')) { window.deleteFile('{{s:fileHandle}}'); }"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+          </tr>
+     '''
+  ] ;
+  r2h:before <no_studentfiles> .
+
+<no_studentfiles> a r2h:Matcher ;
+  r2h:template [
+    r2h:context s:Fileview;
+    r2h:mustache '''<tr><td colspan="4">Keine Dateien</td></tr>'''
+  ] .
+
+##### Templates for student's decision view #####
+
+<student_decision> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type ;
+    r2h:object m:HMSC;
+  ];
+  r2h:template [
+    r2h:context s:Decisionview ;
+    r2h:javaScript '''function(n) {
+                if(n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'true') {
+                    return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;Sie wurden zum Masterstudium zugelassen!</div>';
+                } else if (n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'false') {
+                    return '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>&nbsp;Diesmal hat es leider nicht geklappt...!</div>';
+                }
+            }'''
+  ] ;
+  r2h:before <no_student_decision> .
+
+<no_student_decision> a r2h:Matcher ;
+  r2h:template [
+    r2h:context s:Decisionview ;
+    r2h:mustache '''<form id="form-decision-upload" action="/import/student" enctype="multipart/form-data" method="post">
+          <div class="form-group">
+            <label for="in-decision-file">Immatrikulationsbescheid importieren</label>
+            <input id="in-decision-file" required type="file" name="upload">
+          </div>
+          <button id="btn-hmsc-decision-save" type="submit" class="btn btn-default">Importieren&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
+          <button id="btn-hmsc-decision-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </form>'''
+  ] .
+
+##### Templates for student's permission view #####
+
+<student_permissions> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate s:permission ;
+  ] ;
+  r2h:template [
+    r2h:context s:Permissionview ;
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Berechtigte WebID: <a href="{{s:permission}}">{{s:permission}}</div>'''
+  ] ;
+  r2h:before <no_student_permissions> .
+
+<no_student_permissions> a r2h:Matcher ;
+  r2h:template [
+    r2h:context s:Permissionview ;
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Keine Berechtigung vergeben.</div>'''
+  ] .
+
+
+##### Templates for hbsc's  files-view #####
+
+<bscfiles> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate b:file
+  ];
+  r2h:template [
+    r2h:context b:Fileview;
+    r2h:mustache '''
+        {{#b:file}}
+            {{{:render .}}}
+        {{/b:file}}
+      '''
+  ] ;
+  r2h:before <no_bscfiles> .
+
+<bscfile> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate b:fileType;
+  ];
+  r2h:template [
+    r2h:context b:Fileview;
+    r2h:mustache '''
+         <tr>
+            <td><a href="/files/download/hbsc/{{b:fileHandle}}">{{b:fileName}}</a></td>
+            <td>{{b:fileSize}}</td>
+            <td>{{b:fileType}}</td>
+            <td><a href="#/files/view" onclick="if(confirm('Datei &quot;{{b:fileName}}&quot; wirklich löschen?')) { window.deleteFile('{{b:fileHandle}}'); }"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+          </tr>
+     '''
+  ] ;
+  r2h:before <no_bscfiles> .
+
+<no_bscfiles> a r2h:Matcher ;
+  r2h:template [
+    r2h:context b:Fileview;
+    r2h:mustache '''<tr><td colspan="4">Keine Dateien</td></tr>'''
+  ] .
+
+##### Templates for hbsc's permission view #####
+
+<hbsc_permissions> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate b:permission ;
+  ] ;
+  r2h:template [
+    r2h:context b:Permissionview ;
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Berechtigte WebID: <a href="{{b:permission}}">{{b:permission}}</div>'''
+  ] ;
+  r2h:before <no_student_permissions> .
+
+<no_student_permissions> a r2h:Matcher ;
+  r2h:template [
+    r2h:context b:Permissionview ;
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Keine Berechtigung vergeben.</div>'''
+  ] .
+
+##### Templates for hmsc's permission view #####
+
+<hmsc_permissions> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate m:permission ;
+  ] ;
+  r2h:template [
+    r2h:context m:Permissionview ;
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Berechtigte WebID: <a href="{{m:permission}}">{{m:permission}}</div>'''
+  ] ;
+  r2h:before <no_student_permissions> .
+
+<no_student_permissions> a r2h:Matcher ;
+  r2h:template [
+    r2h:context m:Permissionview ;
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Keine Berechtigung vergeben.</div>'''
+  ] .
+
+########################################################
+########## Templates for dossier-view student ##########
+########################################################
+
+<studentdata_dossier> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate rdf:type ;
+    r2h:object s:Student
+  ] ;
+  r2h:template [
+    r2h:context s:Dossierview_studentdata ;
+    r2h:mustache '''<table class="table table-condensed table-bordered">
+       <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Wert</th>
+            <th>Im Dossier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td id="td-name">{{s:name}}</td>
+            <td><input type="checkbox" class="form-control" id="name"></input></td>
+          </tr>
+          <tr>
+            <td>Vorname</td>
+            <td id="td-vorname">{{s:vorname}}</td>
+            <td><input type="checkbox" class="form-control" id="vorname"></input></td>
+          </tr>
+          <tr>
+            <td>Geburtsdatum</td>
+            <td id="td-geburtsdatum">{{s:geburtsdatum}}</td>
+            <td><input type="checkbox" class="form-control" id="geburtsdatum"></input></td>
+          </tr>
+          <tr>
+            <td>Zivilstand</td>
+            <td id="td-zivilstand">{{s:zivilstand}}</td>
+            <td><input type="checkbox" class="form-control" id="zivilstand"></input></td>
+          </tr>
+          <tr>
+            <td>E-Mail</td>
+            <td><a id="td-email" href="mailto:{{s:email}}">{{s:email}}</a></td>
+            <td><input type="checkbox" class="form-control" id="email"></input></td>
+          </tr>
+          <tr>
+            <td>WebID</td>
+            <td id="td-webid"><a href="{{s:webid}}">{{s:webid}}</a></td>
+            <td><input type="checkbox" class="form-control" id="webid"></input></td>
+          </tr>
+          <tr>
+            <td>Matrikelnummer</td>
+            <td id="td-matrikelnummer">{{s:matrikelnummer}}</td>
+            <td><input type="checkbox" class="form-control" id="matrikelnummer"></input></td>
+          </tr>
+          <tr>
+            <td>Sozialversicherungsnummer</td>
+            <td id="td-sozialversicherungsnummer">{{s:sozialversicherungsnummer}}</td>
+            <td><input type="checkbox" class="form-control" id="sozialversicherungsnummer"></input></td>
+          </tr>
+          <tr>
+            <td>Strasse</td>
+            <td id="td-strasse">{{s:strasse}}</td>
+            <td><input type="checkbox" class="form-control" id="strasse"></input></td>
+          </tr>
+          <tr>
+            <td>Postleitzahl</td>
+            <td id="td-plz">{{s:plz}}</td>
+            <td><input type="checkbox" class="form-control" id="plz"></input></td>
+          </tr>
+          <tr>
+            <td>Ort</td>
+            <td id="td-ort">{{s:ort}}</td>
+            <td><input type="checkbox" class="form-control" id="ort"></input></td>
+          </tr>
+          <tr>
+            <td>Nationalität</td>
+            <td id="td-nationalitaet">{{s:nationalitaet}}</td>
+            <td><input type="checkbox" class="form-control" id="nationalitaet"></input></td>
+          </tr>
+          <tr>
+            <td>Heimatort</td>
+            <td id="td-heimatort">{{s:heimatort}}</td>
+            <td><input type="checkbox" class="form-control" id="heimatort"></input></td>
+          </tr>
+          <tr>
+            <td>Wohnort BA</td>
+            <td id="td-wohnortstudba">{{s:wohnortstudba}}</td>
+            <td><input type="checkbox" class="form-control" id="wohnortstudba"></input></td>
+          </tr>
+          <tr>
+            <td>Wohnort 2 Jahre</td>
+            <td id="td-wohnort2jahre">{{s:wohnort2jahre}}</td>
+            <td><input type="checkbox" class="form-control" id="wohnort2jahre"></input></td>
+          </tr>
+        </tbody>
+      </table>
+      <script>window.getExportFiltersFromStore();</script>'''
+  ] ;
+  r2h:before <no_studentdata_dossier> .
+
+<no_studentdata_dossier> a r2h:Matcher ;
+  r2h:template [
+    r2h:context s:Dossierview_studentdata ;
+    r2h:mustache ""
+  ] .
+
+<bscdata_dossier> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate rdf:type ;
+    r2h:object b:BSCData
+  ] ;
+  r2h:template [
+    r2h:context s:Dossierview_bscdata ;
+    r2h:mustache '''<table class="table table-condensed table-bordered">
+       <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Wert</th>
+            <th>Im Dossier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Datum BSc-Abschluss</td>
+            <td id="td-datebsc">{{b:datebsc}}</td>
+            <td><input type="checkbox" class="form-control" id="datebsc"></input></td>
+          </tr>
+          <tr>
+            <td>Studiengang BSc</td>
+            <td id="td-studiengang">{{b:studiengang}}</td>
+            <td><input type="checkbox" class="form-control" id="studiengang"></input></td>
+          </tr>
+          <tr>
+            <td>Umfang (ECTS)</td>
+            <td id="td-umfang">{{b:umfang}}</td>
+            <td><input type="checkbox" class="form-control" id="umfang"></input></td>
+          </tr>
+        </tbody>
+      </table>
+      <script>window.getExportFiltersFromStore();</script>'''
+  ] ;
+  r2h:before <no_bscdata_dossier> .
+
+<no_bscdata_dossier> a r2h:Matcher ;
+  r2h:template [
+    r2h:context s:Dossierview_bscdata ;
+    r2h:mustache "Keine Daten von der Hochschule BSc!"
+  ] .
+
+<studentfiles_dossier> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate s:file
+  ];
+  r2h:template [
+    r2h:context s:Dossierview_files ;
+    r2h:mustache '''
+        {{#s:file}}
+            {{{:render .}}}
+        {{/s:file}}
+        <script>window.getExportFiltersFromStore();</script>
+      '''
+  ] ;
+  r2h:before <no_studentfiles_dossier> .
+
+<studentfile_dossier> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate s:fileType;
+  ];
+  r2h:template [
+    r2h:context s:Dossierview_files ;
+    r2h:mustache '''
+         <tr>
+            <td><a href="/files/download/student/{{s:fileHandle}}">{{s:fileName}}</a></td>
+            <td><input type="checkbox" class="form-control" id="file_{{s:fileHandle}}"></input></td>
+          </tr>
+     '''
+  ] ;
+  r2h:before <no_studentfiles_dossier> .
+
+<no_studentfiles_dossier> a r2h:Matcher ;
+  r2h:template [
+    r2h:context s:Dossierview_files ;
+    r2h:mustache '''<tr><td colspan="4">Keine Dateien</td></tr>'''
+  ] .
+
+#####################################################
+########## Templates for dossier-view hmsc ##########
+#####################################################
+
+<studentdata_dossier_hmsc> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate rdf:type ;
+    r2h:object s:Student
+  ] ;
+  r2h:template [
+    r2h:context m:Dossierview_studentdata ;
+    r2h:mustache '''<table class="table table-condensed table-bordered">
+       <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Wert</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td id="td-name">{{s:name}}</td>
+          </tr>
+          <tr>
+            <td>Vorname</td>
+            <td id="td-vorname">{{s:vorname}}</td>
+          </tr>
+          <tr>
+            <td>Geburtsdatum</td>
+            <td id="td-geburtsdatum">{{s:geburtsdatum}}</td>
+          </tr>
+          <tr>
+            <td>Zivilstand</td>
+            <td id="td-zivilstand">{{s:zivilstand}}</td>
+          </tr>
+          <tr>
+            <td>E-Mail</td>
+            <td><a id="td-email" href="mailto:{{s:email}}">{{s:email}}</a></td>
+          </tr>
+          <tr>
+            <td>WebID</td>
+            <td id="td-webid"><a href="{{s:webid}}">{{s:webid}}</a></td>
+          </tr>
+          <tr>
+            <td>Matrikelnummer</td>
+            <td id="td-matrikelnummer">{{s:matrikelnummer}}</td>
+          </tr>
+          <tr>
+            <td>Sozialversicherungsnummer</td>
+            <td id="td-sozialversicherungsnummer">{{s:sozialversicherungsnummer}}</td>
+          </tr>
+          <tr>
+            <td>Strasse</td>
+            <td id="td-strasse">{{s:strasse}}</td>
+          </tr>
+          <tr>
+            <td>Postleitzahl</td>
+            <td id="td-plz">{{s:plz}}</td>
+          </tr>
+          <tr>
+            <td>Ort</td>
+            <td id="td-ort">{{s:ort}}</td>
+          </tr>
+          <tr>
+            <td>Nationalität</td>
+            <td id="td-nationalitaet">{{s:nationalitaet}}</td>
+          </tr>
+          <tr>
+            <td>Heimatort</td>
+            <td id="td-heimatort">{{s:heimatort}}</td>
+          <tr>
+            <td>Wohnort BA</td>
+            <td id="td-wohnortstudba">{{s:wohnortstudba}}</td>
+          </tr>
+          <tr>
+            <td>Wohnort 2 Jahre</td>
+            <td id="td-wohnort2jahre">{{s:wohnort2jahre}}</td>
+          </tr>
+        </tbody>
+      </table>
+    '''
+  ] ;
+  r2h:before <no_studentdata_dossier_hmsc> .
+
+<no_studentdata_dossier_hmsc> a r2h:Matcher ;
+  r2h:template [
+    r2h:context m:Dossierview_studentdata ;
+    r2h:mustache ""
+  ] .
+
+<bscdata_dossier_hmsc> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate rdf:type ;
+    r2h:object b:BSCData
+  ] ;
+  r2h:template [
+    r2h:context m:Dossierview_bscdata ;
+    r2h:mustache '''<table class="table table-condensed table-bordered">
+       <thead>
+          <tr>
+            <th>Attribut</th>
+            <th>Wert</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Datum BSc-Abschluss</td>
+            <td id="td-datebsc">{{b:datebsc}}</td>
+          </tr>
+          <tr>
+            <td>Studiengang BSc</td>
+            <td id="td-studiengang">{{b:studiengang}}</td>
+          </tr>
+          <tr>
+            <td>Umfang (ECTS)</td>
+            <td id="td-umfang">{{b:umfang}}</td>
+          </tr>
+        </tbody>
+      </table>'''
+  ] ;
+  r2h:before <no_bscdata_dossier_hmsc> .
+
+<no_bscdata_dossier_hmsc> a r2h:Matcher ;
+  r2h:template [
+    r2h:context m:Dossierview_bscdata ;
+    r2h:mustache "Keine Daten von der Hochschule BSc!"
+  ] .
+
+<studentfiles_dossier_hmsc> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this ;
+    r2h:predicate m:file
+  ];
+  r2h:template [
+    r2h:context m:Dossierview_files ;
+    r2h:mustache '''
+        {{#m:file}}
+            {{{:render .}}}
+        {{/m:file}}
+      '''
+  ] ;
+  r2h:before <no_studentfiles_dossier_hmsc> .
+
+<studentfile_dossier_hmsc> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate m:fileType;
+  ];
+  r2h:template [
+    r2h:context m:Dossierview_files ;
+    r2h:mustache '''
+         <tr>
+            <td><a href="/files/download/hmsc/{{m:fileHandle}}">{{m:fileName}}</a></td>
+          </tr>
+     '''
+  ] ;
+  r2h:before <no_studentfiles_dossier_hmsc> .
+
+<no_studentfiles_dossier_hmsc> a r2h:Matcher ;
+  r2h:template [
+    r2h:context m:Dossierview_files ;
+    r2h:mustache '''<tr><td colspan="4">Keine Dateien</td></tr>'''
+  ] .
+
+<decision_form> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type ;
+    r2h:object m:HMSC;
+  ];
+  r2h:template [
+    r2h:context m:Decision ;
+    r2h:javaScript '''function(n) {
+                if(n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'true') {
+                    return '<label for="in-decision">Student zum MSc-Studium zulassen</label>' +
+                           '<input type="checkbox" class="form-control" id="in-decision" checked></input>'
+                } else {
+                    return '<label for="in-decision">Student zum MSc-Studium zulassen</label>' +
+                           '<input type="checkbox" class="form-control" id="in-decision"></input>'
+                }
+            }'''
+  ] ;
+  r2h:before <no_decision_form> .
+
+<no_decision_form> a r2h:Matcher ;
+  r2h:template [
+    r2h:context m:Decision ;
+    r2h:mustache '''Error'''
+  ] .
