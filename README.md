@@ -42,46 +42,48 @@ FUSEKI_BASE point to the right directory.
 
 Fuseki Configuration
 --------------------
-# Start the Fuseki-server and access it by pointing your browser to <http://localhost:3030> 
-  (replace localhost if needed by the host on which you have installed Fuseki and the other
-  components). Note: if you are accessing Fuseki over the network, you may have to set 
-  the permissions in it's "shiro.ini" to be able to perform the following operations.
+1. Start the Fuseki-server and access it by pointing your browser to <http://localhost:3030> 
+   (replace localhost if needed by the host on which you have installed Fuseki and the other
+   components). Note: if you are accessing Fuseki over the network, you may have to set 
+   the permissions in it's "shiro.ini" to be able to perform the following operations.
 
-# In the Fuseki webinterface, go to the "manage datasets"-tab and click "add new dataset".
+2. In the Fuseki webinterface, go to the "manage datasets"-tab and click "add new dataset".
 
-# Enter "persemid" as name for the new dataset, choose the other options according to your needs.
+3. Enter "persemid" as name for the new dataset, choose the other options according to your needs.
 
-# Change to the "dataset"-tab and choose the "edit"-tab in the new view
+4. Change to the "dataset"-tab and choose the "edit"-tab in the new view
 
-# Enter "http://student.example.org" in the "graph:"-field and paste the contents of the file
-  default-data/student.ttl into the textarea below, click "save". 
+5. Enter "http://student.example.org" in the "graph:"-field and paste the contents of the file
+   default-data/student.ttl into the textarea below, click "save". 
 
-# Enter "http://hbsc.example.org" in the "graph:"-field and paste the contents of the file
-  default-data/hbsc.ttl into the textarea below, click "save". 
+6. Enter "http://hbsc.example.org" in the "graph:"-field and paste the contents of the file
+   default-data/hbsc.ttl into the textarea below, click "save". 
 
-# Enter "http://hmsc.example.org" in the "graph:"-field and paste the contents of the file
-  default-data/hmsc.ttl into the textarea below, click "save".
+7. Enter "http://hmsc.example.org" in the "graph:"-field and paste the contents of the file
+   default-data/hmsc.ttl into the textarea below, click "save".
 
-# Click on the "list current graphs" button to the left of the textarea and ensure that you
-  see the three freshly created graphs and some amount of triples in them, otherwise repeat
-  the according steps above.
+8. Click on the "list current graphs" button to the left of the textarea and ensure that you
+   see the three freshly created graphs and some amount of triples in them, otherwise repeat
+   the according steps above.
 
 You have now successfully prepared Fuseki for the PerSemID-PoC.
 
 Install and start the PerSemID-PoC
 ----------------------------------
 
-# Create the directories used to store user files:
-  /tmp/psidimas/student
-  /tmp/psidimas/hbsc
-  /tmp/psidimas/hmsc
+1. Create the directories used to store user files:
+```
+   /tmp/psidimas/student
+   /tmp/psidimas/hbsc
+   /tmp/psidimas/hmsc
+```
 
-# Change into the directory containing the project-checkout
+2. Change into the directory containing the project-checkout
 
-# Run the command "npm install" - this may take a while
+3. Run the command "npm install" - this may take a while
 
-# If no errors occured turing the install, the PerSemID-PoC can now be started using the
-  command "npm start" at any time
+4. If no errors occured turing the install, the PerSemID-PoC can now be started using the
+   command "npm start" at any time
 
 Congratulations! You should now have successfully installed the PerSemID-PoC and 
 can try it out by accessing it at <http://localhost:8443> (or the host you're using for
