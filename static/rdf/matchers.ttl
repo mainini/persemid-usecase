@@ -18,25 +18,25 @@
     r2h:mustache '''<table class="table table-condensed table-bordered">
        <thead>
           <tr>
-            <th>Attribut</th>
-            <th>Wert</th>
+            <th>Attribute</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Name</td>
+            <td>Last Name</td>
             <td id="td-name">{{s:name}}</td>
           </tr>
           <tr>
-            <td>Vorname</td>
+            <td>Firstname</td>
             <td id="td-vorname">{{s:vorname}}</td>
           </tr>
           <tr>
-            <td>Geburtsdatum</td>
+            <td>Date of Birth</td>
             <td id="td-geburtsdatum">{{s:geburtsdatum}}</td>
           </tr>
           <tr>
-            <td>Zivilstand</td>
+            <td>Marital Status</td>
             <td id="td-zivilstand">{{s:zivilstand}}</td>
           </tr>
           <tr>
@@ -48,39 +48,39 @@
             <td id="td-webid"><a href="{{s:webid}}">{{s:webid}}</a></td>
           </tr>
           <tr>
-            <td>Matrikelnummer</td>
+            <td>Matriculationnumber</td>
             <td id="td-matrikelnummer">{{s:matrikelnummer}}</td>
           </tr>
           <tr>
-            <td>Sozialversicherungsnummer</td>
+            <td>Social Security Number</td>
             <td id="td-sozialversicherungsnummer">{{s:sozialversicherungsnummer}}</td>
           </tr>
           <tr>
-            <td>Strasse</td>
+            <td>Street</td>
             <td id="td-strasse">{{s:strasse}}</td>
           </tr>
           <tr>
-            <td>Postleitzahl</td>
+            <td>Postal Code</td>
             <td id="td-plz">{{s:plz}}</td>
           </tr>
           <tr>
-            <td>Ort</td>
+            <td>Town</td>
             <td id="td-ort">{{s:ort}}</td>
           </tr>
           <tr>
-            <td>Nationalität</td>
+            <td>Nationality</td>
             <td id="td-nationalitaet">{{s:nationalitaet}}</td>
           </tr>
           <tr>
-            <td>Heimatort</td>
+            <td>Hometown</td>
             <td id="td-heimatort">{{s:heimatort}}</td>
           </tr>
           <tr>
-            <td>Wohnort BA</td>
+            <td>Town Bachelor</td>
             <td id="td-wohnortstudba">{{s:wohnortstudba}}</td>
           </tr>
           <tr>
-            <td>Wohnort 2 Jahre</td>
+            <td>Town Last 2 Years</td>
             <td id="td-wohnort2jahre">{{s:wohnort2jahre}}</td>
           </tr>
         </tbody>
@@ -102,21 +102,21 @@
      <table class="table table-condensed table-bordered">
        <thead>
           <tr>
-            <th>Attribut</th>
-            <th>Wert</th>
+            <th>Attribute</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Datum BSc-Abschluss</td>
+            <td>Date of BSc-degree</td>
             <td id="td-datebsc">{{b:datebsc}}</td>
           </tr>
           <tr>
-            <td>Studiengang BSc</td>
+            <td>Program of study BSc</td>
             <td id="td-studiengang">{{b:studiengang}}</td>
           </tr>
           <tr>
-            <td>Umfang (ECTS)</td>
+            <td>Number of ECTS-points</td>
             <td id="td-umfang">{{b:umfang}}</td>
           </tr>
         </tbody>
@@ -144,21 +144,21 @@
     r2h:mustache '''<table class="table table-condensed table-bordered">
        <thead>
           <tr>
-            <th>Attribut</th>
-            <th>Wert</th>
+            <th>Attribute</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Datum BSc-Abschluss</td>
+            <td>Date of BSc-degree</td>
             <td id="td-datebsc">{{b:datebsc}}</td>
           </tr>
           <tr>
-            <td>Studiengang BSc</td>
+            <td>Program of study BSc</td>
             <td id="td-studiengang">{{b:studiengang}}</td>
           </tr>
           <tr>
-            <td>Umfang (ECTS)</td>
+            <td>ECTS-Points</td>
             <td id="td-umfang">{{b:umfang}}</td>
           </tr>
         </tbody>
@@ -169,7 +169,7 @@
 <no_bscdata> a r2h:Matcher ;
   r2h:template [
     r2h:context b:Dataview ;
-    r2h:mustache "Fehler: Triplestore nicht initialisiert!"
+    r2h:mustache "Error: Triplestore not initialized!"
   ] .
 
 
@@ -202,7 +202,7 @@
             <td><a href="/files/download/student/{{s:fileHandle}}">{{s:fileName}}</a></td>
             <td>{{s:fileSize}}</td>
             <td>{{s:fileType}}</td>
-            <td><a href="#/files/view" onclick="if(confirm('Datei &quot;{{s:fileName}}&quot; wirklich löschen?')) { window.deleteFile('{{s:fileHandle}}'); }"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+            <td><a href="#/files/view" onclick="if(confirm('Really delete &quot;{{s:fileName}}&quot;?')) { window.deleteFile('{{s:fileHandle}}'); }"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
           </tr>
      '''
   ] ;
@@ -211,7 +211,7 @@
 <no_studentfiles> a r2h:Matcher ;
   r2h:template [
     r2h:context s:Fileview;
-    r2h:mustache '''<tr><td colspan="4">Keine Dateien</td></tr>'''
+    r2h:mustache '''<tr><td colspan="4">No files.</td></tr>'''
   ] .
 
 ##### Templates for student's decision view #####
@@ -226,9 +226,9 @@
     r2h:context s:Decisionview ;
     r2h:javaScript '''function(n) {
                 if(n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'true') {
-                    return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;Sie wurden zum Masterstudium zugelassen!</div>';
+                    return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;Your enrollment for masterstudies has been approved!</div>';
                 } else if (n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'false') {
-                    return '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>&nbsp;Diesmal hat es leider nicht geklappt...!</div>';
+                    return '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>&nbsp;Unfortunately, your enrollment for masterstudies has been denied!</div>';
                 }
             }'''
   ] ;
@@ -239,11 +239,11 @@
     r2h:context s:Decisionview ;
     r2h:mustache '''<form id="form-decision-upload" action="/import/student" enctype="multipart/form-data" method="post">
           <div class="form-group">
-            <label for="in-decision-file">Immatrikulationsbescheid importieren</label>
+            <label for="in-decision-file">Import decision</label>
             <input id="in-decision-file" required type="file" name="upload">
           </div>
-          <button id="btn-hmsc-decision-save" type="submit" class="btn btn-default">Importieren&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
-          <button id="btn-hmsc-decision-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          <button id="btn-hmsc-decision-save" type="submit" class="btn btn-default">Import&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
+          <button id="btn-hmsc-decision-cancel" type="reset" class="btn btn-default">Cancel&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </form>'''
   ] .
 
@@ -256,14 +256,14 @@
   ] ;
   r2h:template [
     r2h:context s:Permissionview ;
-    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Berechtigte WebID: <a href="{{s:permission}}">{{s:permission}}</div>'''
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Allowed WebID: <a href="{{s:permission}}">{{s:permission}}</div>'''
   ] ;
   r2h:before <no_student_permissions> .
 
 <no_student_permissions> a r2h:Matcher ;
   r2h:template [
     r2h:context s:Permissionview ;
-    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Keine Berechtigung vergeben.</div>'''
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;No permission configured.</div>'''
   ] .
 
 
@@ -296,7 +296,7 @@
             <td><a href="/files/download/hbsc/{{b:fileHandle}}">{{b:fileName}}</a></td>
             <td>{{b:fileSize}}</td>
             <td>{{b:fileType}}</td>
-            <td><a href="#/files/view" onclick="if(confirm('Datei &quot;{{b:fileName}}&quot; wirklich löschen?')) { window.deleteFile('{{b:fileHandle}}'); }"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+            <td><a href="#/files/view" onclick="if(confirm('Really delete &quot;{{b:fileName}}&quot;?')) { window.deleteFile('{{b:fileHandle}}'); }"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
           </tr>
      '''
   ] ;
@@ -305,7 +305,7 @@
 <no_bscfiles> a r2h:Matcher ;
   r2h:template [
     r2h:context b:Fileview;
-    r2h:mustache '''<tr><td colspan="4">Keine Dateien</td></tr>'''
+    r2h:mustache '''<tr><td colspan="4">No files.</td></tr>'''
   ] .
 
 ##### Templates for hbsc's permission view #####
@@ -317,14 +317,14 @@
   ] ;
   r2h:template [
     r2h:context b:Permissionview ;
-    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Berechtigte WebID: <a href="{{b:permission}}">{{b:permission}}</div>'''
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Allowed WebID: <a href="{{b:permission}}">{{b:permission}}</div>'''
   ] ;
   r2h:before <no_student_permissions> .
 
 <no_student_permissions> a r2h:Matcher ;
   r2h:template [
     r2h:context b:Permissionview ;
-    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Keine Berechtigung vergeben.</div>'''
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;No permission configured.</div>'''
   ] .
 
 ##### Templates for hmsc's permission view #####
@@ -336,14 +336,14 @@
   ] ;
   r2h:template [
     r2h:context m:Permissionview ;
-    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Berechtigte WebID: <a href="{{m:permission}}">{{m:permission}}</div>'''
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Allowed WebID: <a href="{{m:permission}}">{{m:permission}}</div>'''
   ] ;
   r2h:before <no_student_permissions> .
 
 <no_student_permissions> a r2h:Matcher ;
   r2h:template [
     r2h:context m:Permissionview ;
-    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;Keine Berechtigung vergeben.</div>'''
+    r2h:mustache '''<div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp;No permission configured.</div>'''
   ] .
 
 ########################################################
@@ -361,29 +361,29 @@
     r2h:mustache '''<table class="table table-condensed table-bordered">
        <thead>
           <tr>
-            <th>Attribut</th>
-            <th>Wert</th>
-            <th>Im Dossier</th>
+            <th>Attribute</th>
+            <th>Value</th>
+            <th>Included in dossier</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Name</td>
+            <td>Last Name</td>
             <td id="td-name">{{s:name}}</td>
             <td><input type="checkbox" class="form-control" id="name"></input></td>
           </tr>
           <tr>
-            <td>Vorname</td>
+            <td>First Name</td>
             <td id="td-vorname">{{s:vorname}}</td>
             <td><input type="checkbox" class="form-control" id="vorname"></input></td>
           </tr>
           <tr>
-            <td>Geburtsdatum</td>
+            <td>Date of Birth</td>
             <td id="td-geburtsdatum">{{s:geburtsdatum}}</td>
             <td><input type="checkbox" class="form-control" id="geburtsdatum"></input></td>
           </tr>
           <tr>
-            <td>Zivilstand</td>
+            <td>Marital Status</td>
             <td id="td-zivilstand">{{s:zivilstand}}</td>
             <td><input type="checkbox" class="form-control" id="zivilstand"></input></td>
           </tr>
@@ -398,47 +398,47 @@
             <td><input type="checkbox" class="form-control" id="webid"></input></td>
           </tr>
           <tr>
-            <td>Matrikelnummer</td>
+            <td>Matriculationnumber</td>
             <td id="td-matrikelnummer">{{s:matrikelnummer}}</td>
             <td><input type="checkbox" class="form-control" id="matrikelnummer"></input></td>
           </tr>
           <tr>
-            <td>Sozialversicherungsnummer</td>
+            <td>Social Security Number</td>
             <td id="td-sozialversicherungsnummer">{{s:sozialversicherungsnummer}}</td>
             <td><input type="checkbox" class="form-control" id="sozialversicherungsnummer"></input></td>
           </tr>
           <tr>
-            <td>Strasse</td>
+            <td>Street</td>
             <td id="td-strasse">{{s:strasse}}</td>
             <td><input type="checkbox" class="form-control" id="strasse"></input></td>
           </tr>
           <tr>
-            <td>Postleitzahl</td>
+            <td>Postal Code</td>
             <td id="td-plz">{{s:plz}}</td>
             <td><input type="checkbox" class="form-control" id="plz"></input></td>
           </tr>
           <tr>
-            <td>Ort</td>
+            <td>Town</td>
             <td id="td-ort">{{s:ort}}</td>
             <td><input type="checkbox" class="form-control" id="ort"></input></td>
           </tr>
           <tr>
-            <td>Nationalität</td>
+            <td>Nationality</td>
             <td id="td-nationalitaet">{{s:nationalitaet}}</td>
             <td><input type="checkbox" class="form-control" id="nationalitaet"></input></td>
           </tr>
           <tr>
-            <td>Heimatort</td>
+            <td>Hometown</td>
             <td id="td-heimatort">{{s:heimatort}}</td>
             <td><input type="checkbox" class="form-control" id="heimatort"></input></td>
           </tr>
           <tr>
-            <td>Wohnort BA</td>
+            <td>Town Bachelor</td>
             <td id="td-wohnortstudba">{{s:wohnortstudba}}</td>
             <td><input type="checkbox" class="form-control" id="wohnortstudba"></input></td>
           </tr>
           <tr>
-            <td>Wohnort 2 Jahre</td>
+            <td>Town Last 2 Years</td>
             <td id="td-wohnort2jahre">{{s:wohnort2jahre}}</td>
             <td><input type="checkbox" class="form-control" id="wohnort2jahre"></input></td>
           </tr>
@@ -465,24 +465,24 @@
     r2h:mustache '''<table class="table table-condensed table-bordered">
        <thead>
           <tr>
-            <th>Attribut</th>
-            <th>Wert</th>
-            <th>Im Dossier</th>
+            <th>Attribute</th>
+            <th>Value</th>
+            <th>Included in Dossier</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Datum BSc-Abschluss</td>
+            <td>Date of BSc-degree</td>
             <td id="td-datebsc">{{b:datebsc}}</td>
             <td><input type="checkbox" class="form-control" id="datebsc"></input></td>
           </tr>
           <tr>
-            <td>Studiengang BSc</td>
+            <td>Program of study BSc</td>
             <td id="td-studiengang">{{b:studiengang}}</td>
             <td><input type="checkbox" class="form-control" id="studiengang"></input></td>
           </tr>
           <tr>
-            <td>Umfang (ECTS)</td>
+            <td>Number of ECTS-points</td>
             <td id="td-umfang">{{b:umfang}}</td>
             <td><input type="checkbox" class="form-control" id="umfang"></input></td>
           </tr>
@@ -495,7 +495,7 @@
 <no_bscdata_dossier> a r2h:Matcher ;
   r2h:template [
     r2h:context s:Dossierview_bscdata ;
-    r2h:mustache "Keine Daten von der Hochschule BSc!"
+    r2h:mustache "No data from university BSc"
   ] .
 
 <studentfiles_dossier> a r2h:Matcher ;
@@ -533,7 +533,7 @@
 <no_studentfiles_dossier> a r2h:Matcher ;
   r2h:template [
     r2h:context s:Dossierview_files ;
-    r2h:mustache '''<tr><td colspan="4">Keine Dateien</td></tr>'''
+    r2h:mustache '''<tr><td colspan="4">No files.</td></tr>'''
   ] .
 
 #####################################################
@@ -551,25 +551,25 @@
     r2h:mustache '''<table class="table table-condensed table-bordered">
        <thead>
           <tr>
-            <th>Attribut</th>
-            <th>Wert</th>
+            <th>Attribute</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Name</td>
+            <td>Last Name</td>
             <td id="td-name">{{s:name}}</td>
           </tr>
           <tr>
-            <td>Vorname</td>
+            <td>First Name</td>
             <td id="td-vorname">{{s:vorname}}</td>
           </tr>
           <tr>
-            <td>Geburtsdatum</td>
+            <td>Date of Birth</td>
             <td id="td-geburtsdatum">{{s:geburtsdatum}}</td>
           </tr>
           <tr>
-            <td>Zivilstand</td>
+            <td>Marital Status</td>
             <td id="td-zivilstand">{{s:zivilstand}}</td>
           </tr>
           <tr>
@@ -581,38 +581,38 @@
             <td id="td-webid"><a href="{{s:webid}}">{{s:webid}}</a></td>
           </tr>
           <tr>
-            <td>Matrikelnummer</td>
+            <td>Matriculation Number</td>
             <td id="td-matrikelnummer">{{s:matrikelnummer}}</td>
           </tr>
           <tr>
-            <td>Sozialversicherungsnummer</td>
+            <td>Social Security Number</td>
             <td id="td-sozialversicherungsnummer">{{s:sozialversicherungsnummer}}</td>
           </tr>
           <tr>
-            <td>Strasse</td>
+            <td>Street</td>
             <td id="td-strasse">{{s:strasse}}</td>
           </tr>
           <tr>
-            <td>Postleitzahl</td>
+            <td>Postal Code</td>
             <td id="td-plz">{{s:plz}}</td>
           </tr>
           <tr>
-            <td>Ort</td>
+            <td>Town</td>
             <td id="td-ort">{{s:ort}}</td>
           </tr>
           <tr>
-            <td>Nationalität</td>
+            <td>Nationality</td>
             <td id="td-nationalitaet">{{s:nationalitaet}}</td>
           </tr>
           <tr>
-            <td>Heimatort</td>
+            <td>Hometown</td>
             <td id="td-heimatort">{{s:heimatort}}</td>
           <tr>
-            <td>Wohnort BA</td>
+            <td>Town Bachelor</td>
             <td id="td-wohnortstudba">{{s:wohnortstudba}}</td>
           </tr>
           <tr>
-            <td>Wohnort 2 Jahre</td>
+            <td>Town 2 Years</td>
             <td id="td-wohnort2jahre">{{s:wohnort2jahre}}</td>
           </tr>
         </tbody>
@@ -638,21 +638,21 @@
     r2h:mustache '''<table class="table table-condensed table-bordered">
        <thead>
           <tr>
-            <th>Attribut</th>
-            <th>Wert</th>
+            <th>Attribute</th>
+            <th>Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Datum BSc-Abschluss</td>
+            <td>Date BSc-degree</td>
             <td id="td-datebsc">{{b:datebsc}}</td>
           </tr>
           <tr>
-            <td>Studiengang BSc</td>
+            <td>Program of study BSc</td>
             <td id="td-studiengang">{{b:studiengang}}</td>
           </tr>
           <tr>
-            <td>Umfang (ECTS)</td>
+            <td>Number of ECTS-points</td>
             <td id="td-umfang">{{b:umfang}}</td>
           </tr>
         </tbody>
@@ -663,7 +663,7 @@
 <no_bscdata_dossier_hmsc> a r2h:Matcher ;
   r2h:template [
     r2h:context m:Dossierview_bscdata ;
-    r2h:mustache "Keine Daten von der Hochschule BSc!"
+    r2h:mustache "No data from university BSc"
   ] .
 
 <studentfiles_dossier_hmsc> a r2h:Matcher ;
@@ -699,7 +699,7 @@
 <no_studentfiles_dossier_hmsc> a r2h:Matcher ;
   r2h:template [
     r2h:context m:Dossierview_files ;
-    r2h:mustache '''<tr><td colspan="4">Keine Dateien</td></tr>'''
+    r2h:mustache '''<tr><td colspan="4">No files.</td></tr>'''
   ] .
 
 <decision_form> a r2h:Matcher ;
@@ -712,10 +712,10 @@
     r2h:context m:Decision ;
     r2h:javaScript '''function(n) {
                 if(n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'true') {
-                    return '<label for="in-decision">Student zum MSc-Studium zulassen</label>' +
+                    return '<label for="in-decision">Allow student-enrollment to masterstudies</label>' +
                            '<input type="checkbox" class="form-control" id="in-decision" checked></input>'
                 } else {
-                    return '<label for="in-decision">Student zum MSc-Studium zulassen</label>' +
+                    return '<label for="in-decision">Allow student-enrollment to masterstudies</label>' +
                            '<input type="checkbox" class="form-control" id="in-decision"></input>'
                 }
             }'''
