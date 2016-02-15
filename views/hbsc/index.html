@@ -6,8 +6,8 @@
     <h1>PerSemID View University BSc</h1>
   </div>
   <p>This is the view of the BSc-university. Data of the BSc-student as well as corresponding documents/files can be managed here.
-     Also, permissions for access can be granted or revoked.</p>
-  <p>A zipped export of the <a href="#/bscdata/view">studentendata</a> (with details about the university) is accessible at <a href="/hbsc/export">/hbsc/export/</a> for <a href="#/permissions">authorized users</a>.</p>
+     Additionally, permissions for access can be granted or revoked.</p>
+  <p>A zipped export of the <a href="#/bscdata/view">student's data</a> (with details about the university) is accessible at <a href="/hbsc/export">/hbsc/export/</a> for <a href="#/permissions">authorized users</a>.</p>
 
   <div class="col-xs-12" style="height:20px;"></div>
 
@@ -44,15 +44,15 @@
           <form id="form-bscdata-edit">
             <div class="form-group">
               <label for="in-datebsc">Date BSc-degree</label>
-              <input type="text" class="form-control" id="in-datebsc" placeholder="Datum BSc-Abschluss">
+              <input type="text" class="form-control" id="in-datebsc" placeholder="Date BSc-degree">
             </div>
             <div class="form-group">
               <label for="in-studiengang">Program of study BSc</label>
-              <input type="text" class="form-control" id="in-studiengang" placeholder="Studiengang BSc">
+              <input type="text" class="form-control" id="in-studiengang" placeholder="Program of study BSc">
             </div>
             <div class="form-group">
-              <label for="in-umfang">Number of ECTS</label>
-              <input type="text" class="form-control" id="in-umfang" placeholder="Umfang (ECTS)">
+              <label for="in-umfang">Number of ECTS-points</label>
+              <input type="text" class="form-control" id="in-umfang" placeholder="Number of ECTS-points">
             </div>
             <button id="btn-bscdata-save" type="button" class="btn btn-default">Save&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
             <button id="btn-bscdata-cancel" type="button" class="btn btn-default">Cancel&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
@@ -109,7 +109,7 @@
         <form id="form-hbsc-permissions">
           <div class="form-group">
             <label for="in-hbsc-webid">Student's WebID</label>
-            <input type="text" class="form-control" id="in-hbsc-webid" placeholder="WebID des Studenten">
+            <input type="text" class="form-control" id="in-hbsc-webid" placeholder="Student's WebID">
           </div>
           <button id="btn-hbsc-permissions-save" type="button" class="btn btn-default">Save&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
           <button id="btn-hbsc-permissions-delete" type="button" class="btn btn-default" onclick="if(confirm('Do you really want to revoke the permission?')) { window.deletePermissionsFromStore(); }">Revoke Permission&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"/></span></button>
