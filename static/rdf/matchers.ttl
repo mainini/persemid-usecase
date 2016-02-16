@@ -98,7 +98,7 @@
   r2h:template [
     r2h:context s:Dataview ;
     r2h:mustache '''
-     <h3>Daten BSc</h3>
+     <h3>Data BSc</h3>
      <table class="table table-condensed table-bordered">
        <thead>
           <tr>

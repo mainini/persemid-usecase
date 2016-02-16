@@ -104,7 +104,7 @@ $('document').ready(function() {
 
     jQuery.post(updateUrl, {update: update})
       .done(function () {
-        alert('Dossiereinstellungen gespeichert!');
+        alert('Export settings saved!');
       })
       .fail(function (e) {
         console.log('Error with query ' + update, e);
