@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This is a proof-of-concept implementation (PoC) for a usecase devised in the PerSemID-project
+This is a proof-of-concept implementation (PoC) for a use case devised in the PerSemID-project
 at BFH, <http://persemid.bfh.ch>. It demonstrates a hypothetical workflow for exchanging information
 related to the enrollment for master studies at a university. 
 

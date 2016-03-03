@@ -226,9 +226,9 @@
     r2h:context s:Decisionview ;
     r2h:javaScript '''function(n) {
                 if(n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'true') {
-                    return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;Your enrollment for masterstudies has been approved!</div>';
+                    return '<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;Your enrollment for master studies has been approved!</div>';
                 } else if (n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'false') {
-                    return '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>&nbsp;Unfortunately, your enrollment for masterstudies has been denied!</div>';
+                    return '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>&nbsp;Unfortunately, your enrollment for master studies has been denied!</div>';
                 }
             }'''
   ] ;
@@ -712,10 +712,10 @@
     r2h:context m:Decision ;
     r2h:javaScript '''function(n) {
                 if(n.graphNode.out(RDF2h.resolveCurie('m:decision')).toString() === 'true') {
-                    return '<label for="in-decision">Allow student-enrollment to masterstudies</label>' +
+                    return '<label for="in-decision">Allow student-enrollment to master studies</label>' +
                            '<input type="checkbox" class="form-control" id="in-decision" checked></input>'
                 } else {
-                    return '<label for="in-decision">Allow student-enrollment to masterstudies</label>' +
+                    return '<label for="in-decision">Allow student-enrollment to master studies</label>' +
                            '<input type="checkbox" class="form-control" id="in-decision"></input>'
                 }
             }'''
