@@ -876,7 +876,7 @@ var _authenticate = function _authenticate(req, res, next) {
           } else {
             console.log('WebID does not match!');
             res.statusCode = 401;
-            res.end('WebID und Profil stimmen nicht ueberein!');
+            res.end('WebID and profile mismatch!');
            }
         }
       });
@@ -902,7 +902,7 @@ var _authorizedExport = function _authorizedExport(req, res, user) {
     } else {
       if (cfg.get('webid:enabled') && !permission) {
           res.statusCode = 401;
-          res.end('Zugriff nicht freigegeben!');
+          res.end('Access denied!');
       } else {
         if (!cfg.get('webid:enabled') || (req.session.webid && req.session.webid === permission)) {
           if (user === 'hmsc') {
@@ -912,7 +912,7 @@ var _authorizedExport = function _authorizedExport(req, res, user) {
           }
         } else {
           res.statusCode = 401;
-          res.end('Zugriff nur mit WebID <' + permission + '>!');
+          res.end('Access only with WebID <' + permission + '>!');
         }
       }
     }
@@ -966,7 +966,7 @@ webserver.use('/student/deletehbsc', function(req, res) {
     _deleteHBSC(req,res);
   } else {
     res.statusCode = 401;
-    res.end('Benoetigt Student-WebID fuer Zugriff!');
+    res.end('Needs WebID of student!');
   }
 });
 
@@ -975,7 +975,7 @@ webserver.use('/student/exportfilters', function(req, res) {
     _exportFilters(req,res);
   } else {
     res.statusCode = 401;
-    res.end('Benoetigt Student-WebID fuer Zugriff!');
+    res.end('Needs WebID of student!');
   }
 });
 
@@ -984,7 +984,7 @@ webserver.use('/hmsc/dossierexists', function(req, res) {
     _dossierExists(req,res);
   } else {
     res.statusCode = 401;
-    res.end('Benoetigt HMsc-WebID fuer Zugriff!');
+    res.end('Needs WebID of university MSc!');
   }
 });
 
@@ -993,7 +993,7 @@ webserver.use('/hmsc/deletedossier', function(req, res) {
     _deleteDossier(req,res);
   } else {
     res.statusCode = 401;
-    res.end('Benoetigt HMsc-WebID fuer Zugriff!');
+    res.end('Needs WebID of university MSc!');
   }
 });
 
@@ -1016,7 +1016,7 @@ webserver.use('/student', function(req, res) {
     res.render('student/index.html', { url: req.url });
   } else {
     res.statusCode = 401;
-    res.end('Benoetigt Student-WebID fuer Zugriff!');
+    res.end('Needs WebID of student!');
   }
 });
 
@@ -1025,7 +1025,7 @@ webserver.use('/hbsc', function(req, res) {
     res.render('hbsc/index.html', { url: req.url });
   } else {
     res.statusCode = 401;
-    res.end('Benoetigt HBsc-WebID fuer Zugriff!');
+    res.end('Needs WebID of university BSc!');
   }
 });
 
@@ -1034,7 +1034,7 @@ webserver.use('/hmsc', function(req, res) {
     res.render('hmsc/index.html', { url: req.url });
   } else {
     res.statusCode = 401;
-    res.end('Benoetigt HMsc-WebID fuer Zugriff!');
+    res.end('Needs WebID of university MSc!');
   }
 });
 

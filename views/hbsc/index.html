@@ -3,11 +3,11 @@
 <div class="container psidimas" role="main">
 
   <div class="page-header">
-    <h1>PerSemID Ansicht Hochschule BSc</h1>
+    <h1>PerSemID View University BSc</h1>
   </div>
-  <p>Dies ist die Ansicht für die Hochschule BSc. Sie kann hier die Daten zum BSc-Studenten sowie zugehörige Dokumente in Dateiform verwalten.
-     Über die Berechtigungsverwaltung kann sie Berechtigungsobjekte anlegen und mit diesen den Zugriff auf die Daten steuern.</p>
-  <p>Ein Export der <a href="#/bscdata/view">Studentendaten</a> (mit Angaben der Hochschule) kann für <a href="#/permissions">Berechtigte</a> unter <a href="/hbsc/export">/hbsc/export/</a> heruntergeladen werden.</p>
+  <p>This is the view of the BSc-university. Data of the BSc-student as well as corresponding documents/files can be managed here.
+     Additionally, permissions for access can be granted or revoked.</p>
+  <p>A zipped export of the <a href="#/bscdata/view">student's data</a> (with details about the university) is accessible at <a href="/hbsc/export">/hbsc/export/</a> for <a href="#/permissions">authorized users</a>.</p>
 
   <div class="col-xs-12" style="height:20px;"></div>
 
@@ -15,9 +15,9 @@
 
   <div>
     <ul id="ul-nav-main" class="nav nav-pills">
-      <li id="li-nav-main-bscdata" role="presentation" class="active"><a id="a-nav-main-bscdata" href="#/bscdata/view">Studentendaten&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
-      <li id="li-nav-main-files" role="presentation"><a id="a-nav-main-files" href="#/files/view">Dokumente&nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span></a></li>
-      <li id="li-nav-main-permissions" role="presentation"><a id="a-nav-main-permissions" href="#/permissions">Berechtigungsobjekte&nbsp;<span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-bscdata" role="presentation" class="active"><a id="a-nav-main-bscdata" href="#/bscdata/view">Studentdata&nbsp;<span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-files" role="presentation"><a id="a-nav-main-files" href="#/files/view">Documents&nbsp;<span class="glyphicon glyphicon-file" aria-hidden="true"></span></a></li>
+      <li id="li-nav-main-permissions" role="presentation"><a id="a-nav-main-permissions" href="#/permissions">Permissions&nbsp;<span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></li>
     </ul>
   </div>
 
@@ -30,8 +30,8 @@
     <div id="div-view-bscdata"  class="col-md-9">
 
       <ul id="ul-nav-data" class="nav nav-tabs">
-        <li id="li-nav-data-view" role="presentation" class="active"><a href="#/bscdata/view">Ansicht&nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></li>
-        <li id="li-nav-data-edit" role="presentation"><a href="#/bscdata/edit">Bearbeiten&nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></li>
+        <li id="li-nav-data-view" role="presentation" class="active"><a href="#/bscdata/view">View&nbsp;<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a></li>
+        <li id="li-nav-data-edit" role="presentation"><a href="#/bscdata/edit">Edit&nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></li>
       </ul>
 
       <div id="div-bscdata-view">
@@ -43,19 +43,19 @@
         <div id="bsc" class="col-md-6">
           <form id="form-bscdata-edit">
             <div class="form-group">
-              <label for="in-datebsc">Datum BSc-Abschluss</label>
-              <input type="text" class="form-control" id="in-datebsc" placeholder="Datum BSc-Abschluss">
+              <label for="in-datebsc">Date BSc-degree</label>
+              <input type="text" class="form-control" id="in-datebsc" placeholder="Date BSc-degree">
             </div>
             <div class="form-group">
-              <label for="in-studiengang">Studiengang BSc</label>
-              <input type="text" class="form-control" id="in-studiengang" placeholder="Studiengang BSc">
+              <label for="in-studiengang">Program of study BSc</label>
+              <input type="text" class="form-control" id="in-studiengang" placeholder="Program of study BSc">
             </div>
             <div class="form-group">
-              <label for="in-umfang">Umfang (ECTS)</label>
-              <input type="text" class="form-control" id="in-umfang" placeholder="Umfang (ECTS)">
+              <label for="in-umfang">Number of ECTS-points</label>
+              <input type="text" class="form-control" id="in-umfang" placeholder="Number of ECTS-points">
             </div>
-            <button id="btn-bscdata-save" type="button" class="btn btn-default">Speichern&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-            <button id="btn-bscdata-cancel" type="button" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <button id="btn-bscdata-save" type="button" class="btn btn-default">Save&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+            <button id="btn-bscdata-cancel" type="button" class="btn btn-default">Cancel&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
           </form>
         </div>
       </div>
@@ -67,7 +67,7 @@
     <div id="div-view-files" class="col-md-9" style="display:none;">
 
       <ul id="ul-nav-data" class="nav nav-tabs">
-        <li id="li-nav-files-view" role="presentation" class="active"><a href="#/files/view">Verwalten&nbsp;<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a></li>
+        <li id="li-nav-files-view" role="presentation" class="active"><a href="#/files/view">Manage&nbsp;<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a></li>
         <li id="li-nav-files-upload" role="presentation"><a href="#/files/upload">Upload&nbsp;<span class="glyphicon glyphicon-upload" aria-hidden="true"></span></a></li>
       </ul>
 
@@ -75,10 +75,10 @@
         <table class="table table-condensed table-bordered">
           <thead>
             <tr>
-              <th>Datei</th>
-              <th>Grösse</th>
-              <th>Typ</th>
-              <th>Löschen</th>
+              <th>File</th>
+              <th>Size</th>
+              <th>Type</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody id="ld2h-view-files" class="render" resource="http://example.org/HBSC#" context="b:Fileview"></tbody>
@@ -89,11 +89,11 @@
       <div id="div-file-form" class="col-md-6" style="display:none;">
         <form id="form-file-upload" action="/files/upload/hbsc" enctype="multipart/form-data" method="post">
           <div class="form-group">
-            <label for="in-upload-file">Datei hochladen</label>
+            <label for="in-upload-file">Upload file</label>
             <input id="in-upload-file" required type="file" name="upload">
           </div>
-          <button id="btn-upload-save" type="submit" class="btn btn-default">Speichern&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-          <button id="btn-upload-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          <button id="btn-upload-save" type="submit" class="btn btn-default">Save&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+          <button id="btn-upload-cancel" type="reset" class="btn btn-default">Cancel&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </form>
       </div>
 
@@ -108,12 +108,12 @@
 
         <form id="form-hbsc-permissions">
           <div class="form-group">
-            <label for="in-hbsc-webid">WebID des Studenten</label>
-            <input type="text" class="form-control" id="in-hbsc-webid" placeholder="WebID des Studenten">
+            <label for="in-hbsc-webid">Student's WebID</label>
+            <input type="text" class="form-control" id="in-hbsc-webid" placeholder="Student's WebID">
           </div>
-          <button id="btn-hbsc-permissions-save" type="button" class="btn btn-default">Speichern&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
-          <button id="btn-hbsc-permissions-delete" type="button" class="btn btn-default" onclick="if(confirm('Berechtigung wirklich löschen?')) { window.deletePermissionsFromStore(); }">Berechtigung löschen&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"/></span></button>
-          <button id="btn-hbsc-permissions-cancel" type="reset" class="btn btn-default">Abbrechen&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+          <button id="btn-hbsc-permissions-save" type="button" class="btn btn-default">Save&nbsp;<span class="glyphicon glyphicon-ok" aria-hidden="true"/></span></button>
+          <button id="btn-hbsc-permissions-delete" type="button" class="btn btn-default" onclick="if(confirm('Do you really want to revoke the permission?')) { window.deletePermissionsFromStore(); }">Revoke Permission&nbsp;<span class="glyphicon glyphicon-trash" aria-hidden="true"/></span></button>
+          <button id="btn-hbsc-permissions-cancel" type="reset" class="btn btn-default">Cancel&nbsp;<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </form>
       </div>
     </div>

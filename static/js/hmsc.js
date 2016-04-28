@@ -40,7 +40,7 @@ $('document').ready(function() {
 
     jQuery.post(updateUrl, {update: update})
       .done(function () {
-        alert('Bescheid gespeichert!');
+        alert('Decision saved!');
         document.location.hash = '/decision';
       })
       .fail(function (e) {
